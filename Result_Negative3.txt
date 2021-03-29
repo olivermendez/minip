@@ -1,0 +1,10 @@
+Rule in title: _PROGRAM _ID 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+syntax error
+NO CUMPLE

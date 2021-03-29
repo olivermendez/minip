@@ -1,0 +1,51 @@
+Rule in title: _PROGRAM _ID 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in ptitle: _PROC _ID _LPAREN _RPAREN 
+Rule in vars: _NOVARSRule in procs: _NOPROCS 
+Rule in code:  _SEMI 
+Rule in stmt: code 
+Rule in para: stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: procdef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in ptitle: _PROC _ID _LPAREN varlist _RPAREN 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in procs: _NOPROCS 
+Rule in ids: _ID 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in output: _WRITE _LPAREN _LITERAL _RPAREN 
+Rule in stmt: output 
+Rule in loop: _FOR assign _TO expr _DO stmt 
+Rule in stmt: loop 
+Rule in para: stmt 
+Rule in output: _WRITE _LPAREN _LITERAL _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: proclist _SEMI procdef 
+syntax error
+NO CUMPLE

@@ -1,0 +1,36 @@
+Rule in title: _PROGRAM _ID 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in ptitle: _PROC _ID _LPAREN varlist _RPAREN 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: vardef 
+Rule in ptitle: _PROC _ID _LPAREN varlist _RPAREN 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in procs: _NOPROCS 
+Rule in code:  _SEMI 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: procdef 
+Rule in procs: _PROCS proclist 
+ syntax error
+NO CUMPLE

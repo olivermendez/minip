@@ -1,0 +1,1422 @@
+Terminals unused in grammar
+
+    _COMEN
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: title _SEMI block
+
+    2 title: _PROGRAM _ID
+
+    3 block: vars _ENDVARS procs _ENDPROCS code
+
+    4 vars: _VARS varlist _SEMI
+    5     | _NOVARS
+
+    6 varlist: varlist _SEMI vardef
+    7        | vardef
+
+    8 bnl: _LBRACK nlist _RBRACK
+
+    9 vardef: _ID _COLON _INTEGER
+   10       | _ID _COLON _REAL
+   11       | _ID _COLON _INTEGER bnl
+   12       | _ID _COLON _STRING
+
+   13 nlist: nlist _COMMA _ICONST
+   14      | _ICONST
+
+   15 procs: _PROCS proclist
+   16      | _NOPROCS
+
+   17 proclist: proclist _SEMI procdef
+   18         | procdef
+
+   19 procdef: ptitle _SEMI block
+
+   20 ptitle: _PROC _ID _LPAREN varlist _RPAREN
+   21       | _PROC _ID _LPAREN _RPAREN
+
+   22 code: _BEGIN para _END
+   23     | _SEMI
+
+   24 para: para _SEMI stmt
+   25     | stmt
+
+   26 stmt: assign
+   27     | cond
+   28     | loop
+   29     | input
+   30     | output
+   31     | code
+
+   32 assign: ids _ASSIGN expr
+
+   33 expr: expr _PLUS term
+   34     | expr _MINUS term
+   35     | term
+
+   36 ids: _ID
+   37    | _ID _LBRACK vallist _RBRACK
+
+   38 term: term _MULT fac
+   39     | term _DIVIDE fac
+   40     | fac
+
+   41 vallist: vallist _COMMA it
+   42        | it
+
+   43 fac: val
+   44    | _LPAREN expr _RPAREN
+
+   45 val: ids
+   46    | _ID _LPAREN vallist _RPAREN
+   47    | _ICONST
+   48    | _RCONST
+   49    | _ECONST
+   50    | _LITERAL
+
+   51 it: _ID
+   52   | _ICONST
+
+   53 cond: _IF expr bop expr _THEN stmt _ELSE stmt
+
+   54 bop: _EQL
+   55    | _LESS
+   56    | _GTR
+   57    | _LEQ
+   58    | _GEQ
+   59    | _NEQ
+
+   60 loop: _FOR assign _TO expr _DO stmt
+
+   61 input: _READ _LPAREN _ID _RPAREN
+
+   62 output: _WRITE _LPAREN _ID _RPAREN
+   63       | _WRITE _LPAREN _LITERAL _RPAREN
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    _LBRACK (1) 8 37
+    _RBRACK (2) 8 37
+    _LPAREN (3) 20 21 44 46 61 62 63
+    _RPAREN (4) 20 21 44 46 61 62 63
+    _SEMI (5) 1 4 6 17 19 23 24
+    _COLON (6) 9 10 11 12
+    _COMMA (7) 13 41
+    _ASSIGN (8) 32
+    _PLUS (9) 33
+    _MINUS (10) 34
+    _MULT (11) 38
+    _DIVIDE (12) 39
+    _EQL (13) 54
+    _LESS (14) 55
+    _GTR (15) 56
+    _LEQ (16) 57
+    _GEQ (17) 58
+    _NEQ (18) 59
+    _PROGRAM (19) 2
+    _ENDVARS (20) 3
+    _ENDPROCS (21) 3
+    _VARS (22) 4
+    _NOVARS (23) 5
+    _INTEGER (24) 9 11
+    _REAL (25) 10
+    _STRING (26) 12
+    _PROCS (27) 15
+    _NOPROCS (28) 16
+    _PROC (29) 20 21
+    _BEGIN (30) 22
+    _END (31) 22
+    _FOR (32) 60
+    _TO (33) 60
+    _DO (34) 60
+    _IF (35) 53
+    _THEN (36) 53
+    _ELSE (37) 53
+    _READ (38) 61
+    _WRITE (39) 62 63
+    _ID (40) 2 9 10 11 12 20 21 36 37 46 51 61 62
+    _ECONST (41) 49
+    _ICONST (42) 13 14 47 52
+    _RCONST (43) 48
+    _LITERAL (44) 50 63
+    _COMEN (45)
+    error (256)
+
+
+Nonterminals, with rules where they appear
+
+    $accept (48)
+        on left: 0
+    program (49)
+        on left: 1
+        on right: 0
+    title (50)
+        on left: 2
+        on right: 1
+    block (51)
+        on left: 3
+        on right: 1 19
+    vars (52)
+        on left: 4 5
+        on right: 3
+    varlist (53)
+        on left: 6 7
+        on right: 4 6 20
+    bnl (54)
+        on left: 8
+        on right: 11
+    vardef (55)
+        on left: 9 10 11 12
+        on right: 6 7
+    nlist (56)
+        on left: 13 14
+        on right: 8 13
+    procs (57)
+        on left: 15 16
+        on right: 3
+    proclist (58)
+        on left: 17 18
+        on right: 15 17
+    procdef (59)
+        on left: 19
+        on right: 17 18
+    ptitle (60)
+        on left: 20 21
+        on right: 19
+    code (61)
+        on left: 22 23
+        on right: 3 31
+    para (62)
+        on left: 24 25
+        on right: 22 24
+    stmt (63)
+        on left: 26 27 28 29 30 31
+        on right: 24 25 53 60
+    assign (64)
+        on left: 32
+        on right: 26 60
+    expr (65)
+        on left: 33 34 35
+        on right: 32 33 34 44 53 60
+    ids (66)
+        on left: 36 37
+        on right: 32 45
+    term (67)
+        on left: 38 39 40
+        on right: 33 34 35 38 39
+    vallist (68)
+        on left: 41 42
+        on right: 37 41 46
+    fac (69)
+        on left: 43 44
+        on right: 38 39 40
+    val (70)
+        on left: 45 46 47 48 49 50
+        on right: 43
+    it (71)
+        on left: 51 52
+        on right: 41 42
+    cond (72)
+        on left: 53
+        on right: 27
+    bop (73)
+        on left: 54 55 56 57 58 59
+        on right: 53
+    loop (74)
+        on left: 60
+        on right: 28
+    input (75)
+        on left: 61
+        on right: 29
+    output (76)
+        on left: 62 63
+        on right: 30
+
+
+State 0
+
+    0 $accept: . program $end
+
+    _PROGRAM  shift, and go to state 1
+
+    program  go to state 2
+    title    go to state 3
+
+
+State 1
+
+    2 title: _PROGRAM . _ID
+
+    _ID  shift, and go to state 4
+
+
+State 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 5
+
+
+State 3
+
+    1 program: title . _SEMI block
+
+    _SEMI  shift, and go to state 6
+
+
+State 4
+
+    2 title: _PROGRAM _ID .
+
+    $default  reduce using rule 2 (title)
+
+
+State 5
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+State 6
+
+    1 program: title _SEMI . block
+
+    _VARS    shift, and go to state 7
+    _NOVARS  shift, and go to state 8
+
+    block  go to state 9
+    vars   go to state 10
+
+
+State 7
+
+    4 vars: _VARS . varlist _SEMI
+
+    _ID  shift, and go to state 11
+
+    varlist  go to state 12
+    vardef   go to state 13
+
+
+State 8
+
+    5 vars: _NOVARS .
+
+    $default  reduce using rule 5 (vars)
+
+
+State 9
+
+    1 program: title _SEMI block .
+
+    $default  reduce using rule 1 (program)
+
+
+State 10
+
+    3 block: vars . _ENDVARS procs _ENDPROCS code
+
+    _ENDVARS  shift, and go to state 14
+
+
+State 11
+
+    9 vardef: _ID . _COLON _INTEGER
+   10       | _ID . _COLON _REAL
+   11       | _ID . _COLON _INTEGER bnl
+   12       | _ID . _COLON _STRING
+
+    _COLON  shift, and go to state 15
+
+
+State 12
+
+    4 vars: _VARS varlist . _SEMI
+    6 varlist: varlist . _SEMI vardef
+
+    _SEMI  shift, and go to state 16
+
+
+State 13
+
+    7 varlist: vardef .
+
+    $default  reduce using rule 7 (varlist)
+
+
+State 14
+
+    3 block: vars _ENDVARS . procs _ENDPROCS code
+
+    _PROCS    shift, and go to state 17
+    _NOPROCS  shift, and go to state 18
+
+    procs  go to state 19
+
+
+State 15
+
+    9 vardef: _ID _COLON . _INTEGER
+   10       | _ID _COLON . _REAL
+   11       | _ID _COLON . _INTEGER bnl
+   12       | _ID _COLON . _STRING
+
+    _INTEGER  shift, and go to state 20
+    _REAL     shift, and go to state 21
+    _STRING   shift, and go to state 22
+
+
+State 16
+
+    4 vars: _VARS varlist _SEMI .
+    6 varlist: varlist _SEMI . vardef
+
+    _ID  shift, and go to state 11
+
+    $default  reduce using rule 4 (vars)
+
+    vardef  go to state 23
+
+
+State 17
+
+   15 procs: _PROCS . proclist
+
+    _PROC  shift, and go to state 24
+
+    proclist  go to state 25
+    procdef   go to state 26
+    ptitle    go to state 27
+
+
+State 18
+
+   16 procs: _NOPROCS .
+
+    $default  reduce using rule 16 (procs)
+
+
+State 19
+
+    3 block: vars _ENDVARS procs . _ENDPROCS code
+
+    _ENDPROCS  shift, and go to state 28
+
+
+State 20
+
+    9 vardef: _ID _COLON _INTEGER .
+   11       | _ID _COLON _INTEGER . bnl
+
+    _LBRACK  shift, and go to state 29
+
+    $default  reduce using rule 9 (vardef)
+
+    bnl  go to state 30
+
+
+State 21
+
+   10 vardef: _ID _COLON _REAL .
+
+    $default  reduce using rule 10 (vardef)
+
+
+State 22
+
+   12 vardef: _ID _COLON _STRING .
+
+    $default  reduce using rule 12 (vardef)
+
+
+State 23
+
+    6 varlist: varlist _SEMI vardef .
+
+    $default  reduce using rule 6 (varlist)
+
+
+State 24
+
+   20 ptitle: _PROC . _ID _LPAREN varlist _RPAREN
+   21       | _PROC . _ID _LPAREN _RPAREN
+
+    _ID  shift, and go to state 31
+
+
+State 25
+
+   15 procs: _PROCS proclist .
+   17 proclist: proclist . _SEMI procdef
+
+    _SEMI  shift, and go to state 32
+
+    $default  reduce using rule 15 (procs)
+
+
+State 26
+
+   18 proclist: procdef .
+
+    $default  reduce using rule 18 (proclist)
+
+
+State 27
+
+   19 procdef: ptitle . _SEMI block
+
+    _SEMI  shift, and go to state 33
+
+
+State 28
+
+    3 block: vars _ENDVARS procs _ENDPROCS . code
+
+    _SEMI   shift, and go to state 34
+    _BEGIN  shift, and go to state 35
+
+    code  go to state 36
+
+
+State 29
+
+    8 bnl: _LBRACK . nlist _RBRACK
+
+    _ICONST  shift, and go to state 37
+
+    nlist  go to state 38
+
+
+State 30
+
+   11 vardef: _ID _COLON _INTEGER bnl .
+
+    $default  reduce using rule 11 (vardef)
+
+
+State 31
+
+   20 ptitle: _PROC _ID . _LPAREN varlist _RPAREN
+   21       | _PROC _ID . _LPAREN _RPAREN
+
+    _LPAREN  shift, and go to state 39
+
+
+State 32
+
+   17 proclist: proclist _SEMI . procdef
+
+    _PROC  shift, and go to state 24
+
+    procdef  go to state 40
+    ptitle   go to state 27
+
+
+State 33
+
+   19 procdef: ptitle _SEMI . block
+
+    _VARS    shift, and go to state 7
+    _NOVARS  shift, and go to state 8
+
+    block  go to state 41
+    vars   go to state 10
+
+
+State 34
+
+   23 code: _SEMI .
+
+    $default  reduce using rule 23 (code)
+
+
+State 35
+
+   22 code: _BEGIN . para _END
+
+    _SEMI   shift, and go to state 34
+    _BEGIN  shift, and go to state 35
+    _FOR    shift, and go to state 42
+    _IF     shift, and go to state 43
+    _READ   shift, and go to state 44
+    _WRITE  shift, and go to state 45
+    _ID     shift, and go to state 46
+
+    code    go to state 47
+    para    go to state 48
+    stmt    go to state 49
+    assign  go to state 50
+    ids     go to state 51
+    cond    go to state 52
+    loop    go to state 53
+    input   go to state 54
+    output  go to state 55
+
+
+State 36
+
+    3 block: vars _ENDVARS procs _ENDPROCS code .
+
+    $default  reduce using rule 3 (block)
+
+
+State 37
+
+   14 nlist: _ICONST .
+
+    $default  reduce using rule 14 (nlist)
+
+
+State 38
+
+    8 bnl: _LBRACK nlist . _RBRACK
+   13 nlist: nlist . _COMMA _ICONST
+
+    _RBRACK  shift, and go to state 56
+    _COMMA   shift, and go to state 57
+
+
+State 39
+
+   20 ptitle: _PROC _ID _LPAREN . varlist _RPAREN
+   21       | _PROC _ID _LPAREN . _RPAREN
+
+    _RPAREN  shift, and go to state 58
+    _ID      shift, and go to state 11
+
+    varlist  go to state 59
+    vardef   go to state 13
+
+
+State 40
+
+   17 proclist: proclist _SEMI procdef .
+
+    $default  reduce using rule 17 (proclist)
+
+
+State 41
+
+   19 procdef: ptitle _SEMI block .
+
+    $default  reduce using rule 19 (procdef)
+
+
+State 42
+
+   60 loop: _FOR . assign _TO expr _DO stmt
+
+    _ID  shift, and go to state 46
+
+    assign  go to state 60
+    ids     go to state 51
+
+
+State 43
+
+   53 cond: _IF . expr bop expr _THEN stmt _ELSE stmt
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    expr  go to state 67
+    ids   go to state 68
+    term  go to state 69
+    fac   go to state 70
+    val   go to state 71
+
+
+State 44
+
+   61 input: _READ . _LPAREN _ID _RPAREN
+
+    _LPAREN  shift, and go to state 72
+
+
+State 45
+
+   62 output: _WRITE . _LPAREN _ID _RPAREN
+   63       | _WRITE . _LPAREN _LITERAL _RPAREN
+
+    _LPAREN  shift, and go to state 73
+
+
+State 46
+
+   36 ids: _ID .
+   37    | _ID . _LBRACK vallist _RBRACK
+
+    _LBRACK  shift, and go to state 74
+
+    $default  reduce using rule 36 (ids)
+
+
+State 47
+
+   31 stmt: code .
+
+    $default  reduce using rule 31 (stmt)
+
+
+State 48
+
+   22 code: _BEGIN para . _END
+   24 para: para . _SEMI stmt
+
+    _SEMI  shift, and go to state 75
+    _END   shift, and go to state 76
+
+
+State 49
+
+   25 para: stmt .
+
+    $default  reduce using rule 25 (para)
+
+
+State 50
+
+   26 stmt: assign .
+
+    $default  reduce using rule 26 (stmt)
+
+
+State 51
+
+   32 assign: ids . _ASSIGN expr
+
+    _ASSIGN  shift, and go to state 77
+
+
+State 52
+
+   27 stmt: cond .
+
+    $default  reduce using rule 27 (stmt)
+
+
+State 53
+
+   28 stmt: loop .
+
+    $default  reduce using rule 28 (stmt)
+
+
+State 54
+
+   29 stmt: input .
+
+    $default  reduce using rule 29 (stmt)
+
+
+State 55
+
+   30 stmt: output .
+
+    $default  reduce using rule 30 (stmt)
+
+
+State 56
+
+    8 bnl: _LBRACK nlist _RBRACK .
+
+    $default  reduce using rule 8 (bnl)
+
+
+State 57
+
+   13 nlist: nlist _COMMA . _ICONST
+
+    _ICONST  shift, and go to state 78
+
+
+State 58
+
+   21 ptitle: _PROC _ID _LPAREN _RPAREN .
+
+    $default  reduce using rule 21 (ptitle)
+
+
+State 59
+
+    6 varlist: varlist . _SEMI vardef
+   20 ptitle: _PROC _ID _LPAREN varlist . _RPAREN
+
+    _RPAREN  shift, and go to state 79
+    _SEMI    shift, and go to state 80
+
+
+State 60
+
+   60 loop: _FOR assign . _TO expr _DO stmt
+
+    _TO  shift, and go to state 81
+
+
+State 61
+
+   44 fac: _LPAREN . expr _RPAREN
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    expr  go to state 82
+    ids   go to state 68
+    term  go to state 69
+    fac   go to state 70
+    val   go to state 71
+
+
+State 62
+
+   36 ids: _ID .
+   37    | _ID . _LBRACK vallist _RBRACK
+   46 val: _ID . _LPAREN vallist _RPAREN
+
+    _LBRACK  shift, and go to state 74
+    _LPAREN  shift, and go to state 83
+
+    $default  reduce using rule 36 (ids)
+
+
+State 63
+
+   49 val: _ECONST .
+
+    $default  reduce using rule 49 (val)
+
+
+State 64
+
+   47 val: _ICONST .
+
+    $default  reduce using rule 47 (val)
+
+
+State 65
+
+   48 val: _RCONST .
+
+    $default  reduce using rule 48 (val)
+
+
+State 66
+
+   50 val: _LITERAL .
+
+    $default  reduce using rule 50 (val)
+
+
+State 67
+
+   33 expr: expr . _PLUS term
+   34     | expr . _MINUS term
+   53 cond: _IF expr . bop expr _THEN stmt _ELSE stmt
+
+    _PLUS   shift, and go to state 84
+    _MINUS  shift, and go to state 85
+    _EQL    shift, and go to state 86
+    _LESS   shift, and go to state 87
+    _GTR    shift, and go to state 88
+    _LEQ    shift, and go to state 89
+    _GEQ    shift, and go to state 90
+    _NEQ    shift, and go to state 91
+
+    bop  go to state 92
+
+
+State 68
+
+   45 val: ids .
+
+    $default  reduce using rule 45 (val)
+
+
+State 69
+
+   35 expr: term .
+   38 term: term . _MULT fac
+   39     | term . _DIVIDE fac
+
+    _MULT    shift, and go to state 93
+    _DIVIDE  shift, and go to state 94
+
+    $default  reduce using rule 35 (expr)
+
+
+State 70
+
+   40 term: fac .
+
+    $default  reduce using rule 40 (term)
+
+
+State 71
+
+   43 fac: val .
+
+    $default  reduce using rule 43 (fac)
+
+
+State 72
+
+   61 input: _READ _LPAREN . _ID _RPAREN
+
+    _ID  shift, and go to state 95
+
+
+State 73
+
+   62 output: _WRITE _LPAREN . _ID _RPAREN
+   63       | _WRITE _LPAREN . _LITERAL _RPAREN
+
+    _ID       shift, and go to state 96
+    _LITERAL  shift, and go to state 97
+
+
+State 74
+
+   37 ids: _ID _LBRACK . vallist _RBRACK
+
+    _ID      shift, and go to state 98
+    _ICONST  shift, and go to state 99
+
+    vallist  go to state 100
+    it       go to state 101
+
+
+State 75
+
+   24 para: para _SEMI . stmt
+
+    _SEMI   shift, and go to state 34
+    _BEGIN  shift, and go to state 35
+    _FOR    shift, and go to state 42
+    _IF     shift, and go to state 43
+    _READ   shift, and go to state 44
+    _WRITE  shift, and go to state 45
+    _ID     shift, and go to state 46
+
+    code    go to state 47
+    stmt    go to state 102
+    assign  go to state 50
+    ids     go to state 51
+    cond    go to state 52
+    loop    go to state 53
+    input   go to state 54
+    output  go to state 55
+
+
+State 76
+
+   22 code: _BEGIN para _END .
+
+    $default  reduce using rule 22 (code)
+
+
+State 77
+
+   32 assign: ids _ASSIGN . expr
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    expr  go to state 103
+    ids   go to state 68
+    term  go to state 69
+    fac   go to state 70
+    val   go to state 71
+
+
+State 78
+
+   13 nlist: nlist _COMMA _ICONST .
+
+    $default  reduce using rule 13 (nlist)
+
+
+State 79
+
+   20 ptitle: _PROC _ID _LPAREN varlist _RPAREN .
+
+    $default  reduce using rule 20 (ptitle)
+
+
+State 80
+
+    6 varlist: varlist _SEMI . vardef
+
+    _ID  shift, and go to state 11
+
+    vardef  go to state 23
+
+
+State 81
+
+   60 loop: _FOR assign _TO . expr _DO stmt
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    expr  go to state 104
+    ids   go to state 68
+    term  go to state 69
+    fac   go to state 70
+    val   go to state 71
+
+
+State 82
+
+   33 expr: expr . _PLUS term
+   34     | expr . _MINUS term
+   44 fac: _LPAREN expr . _RPAREN
+
+    _RPAREN  shift, and go to state 105
+    _PLUS    shift, and go to state 84
+    _MINUS   shift, and go to state 85
+
+
+State 83
+
+   46 val: _ID _LPAREN . vallist _RPAREN
+
+    _ID      shift, and go to state 98
+    _ICONST  shift, and go to state 99
+
+    vallist  go to state 106
+    it       go to state 101
+
+
+State 84
+
+   33 expr: expr _PLUS . term
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    ids   go to state 68
+    term  go to state 107
+    fac   go to state 70
+    val   go to state 71
+
+
+State 85
+
+   34 expr: expr _MINUS . term
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    ids   go to state 68
+    term  go to state 108
+    fac   go to state 70
+    val   go to state 71
+
+
+State 86
+
+   54 bop: _EQL .
+
+    $default  reduce using rule 54 (bop)
+
+
+State 87
+
+   55 bop: _LESS .
+
+    $default  reduce using rule 55 (bop)
+
+
+State 88
+
+   56 bop: _GTR .
+
+    $default  reduce using rule 56 (bop)
+
+
+State 89
+
+   57 bop: _LEQ .
+
+    $default  reduce using rule 57 (bop)
+
+
+State 90
+
+   58 bop: _GEQ .
+
+    $default  reduce using rule 58 (bop)
+
+
+State 91
+
+   59 bop: _NEQ .
+
+    $default  reduce using rule 59 (bop)
+
+
+State 92
+
+   53 cond: _IF expr bop . expr _THEN stmt _ELSE stmt
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    expr  go to state 109
+    ids   go to state 68
+    term  go to state 69
+    fac   go to state 70
+    val   go to state 71
+
+
+State 93
+
+   38 term: term _MULT . fac
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    ids  go to state 68
+    fac  go to state 110
+    val  go to state 71
+
+
+State 94
+
+   39 term: term _DIVIDE . fac
+
+    _LPAREN   shift, and go to state 61
+    _ID       shift, and go to state 62
+    _ECONST   shift, and go to state 63
+    _ICONST   shift, and go to state 64
+    _RCONST   shift, and go to state 65
+    _LITERAL  shift, and go to state 66
+
+    ids  go to state 68
+    fac  go to state 111
+    val  go to state 71
+
+
+State 95
+
+   61 input: _READ _LPAREN _ID . _RPAREN
+
+    _RPAREN  shift, and go to state 112
+
+
+State 96
+
+   62 output: _WRITE _LPAREN _ID . _RPAREN
+
+    _RPAREN  shift, and go to state 113
+
+
+State 97
+
+   63 output: _WRITE _LPAREN _LITERAL . _RPAREN
+
+    _RPAREN  shift, and go to state 114
+
+
+State 98
+
+   51 it: _ID .
+
+    $default  reduce using rule 51 (it)
+
+
+State 99
+
+   52 it: _ICONST .
+
+    $default  reduce using rule 52 (it)
+
+
+State 100
+
+   37 ids: _ID _LBRACK vallist . _RBRACK
+   41 vallist: vallist . _COMMA it
+
+    _RBRACK  shift, and go to state 115
+    _COMMA   shift, and go to state 116
+
+
+State 101
+
+   42 vallist: it .
+
+    $default  reduce using rule 42 (vallist)
+
+
+State 102
+
+   24 para: para _SEMI stmt .
+
+    $default  reduce using rule 24 (para)
+
+
+State 103
+
+   32 assign: ids _ASSIGN expr .
+   33 expr: expr . _PLUS term
+   34     | expr . _MINUS term
+
+    _PLUS   shift, and go to state 84
+    _MINUS  shift, and go to state 85
+
+    $default  reduce using rule 32 (assign)
+
+
+State 104
+
+   33 expr: expr . _PLUS term
+   34     | expr . _MINUS term
+   60 loop: _FOR assign _TO expr . _DO stmt
+
+    _PLUS   shift, and go to state 84
+    _MINUS  shift, and go to state 85
+    _DO     shift, and go to state 117
+
+
+State 105
+
+   44 fac: _LPAREN expr _RPAREN .
+
+    $default  reduce using rule 44 (fac)
+
+
+State 106
+
+   41 vallist: vallist . _COMMA it
+   46 val: _ID _LPAREN vallist . _RPAREN
+
+    _RPAREN  shift, and go to state 118
+    _COMMA   shift, and go to state 116
+
+
+State 107
+
+   33 expr: expr _PLUS term .
+   38 term: term . _MULT fac
+   39     | term . _DIVIDE fac
+
+    _MULT    shift, and go to state 93
+    _DIVIDE  shift, and go to state 94
+
+    $default  reduce using rule 33 (expr)
+
+
+State 108
+
+   34 expr: expr _MINUS term .
+   38 term: term . _MULT fac
+   39     | term . _DIVIDE fac
+
+    _MULT    shift, and go to state 93
+    _DIVIDE  shift, and go to state 94
+
+    $default  reduce using rule 34 (expr)
+
+
+State 109
+
+   33 expr: expr . _PLUS term
+   34     | expr . _MINUS term
+   53 cond: _IF expr bop expr . _THEN stmt _ELSE stmt
+
+    _PLUS   shift, and go to state 84
+    _MINUS  shift, and go to state 85
+    _THEN   shift, and go to state 119
+
+
+State 110
+
+   38 term: term _MULT fac .
+
+    $default  reduce using rule 38 (term)
+
+
+State 111
+
+   39 term: term _DIVIDE fac .
+
+    $default  reduce using rule 39 (term)
+
+
+State 112
+
+   61 input: _READ _LPAREN _ID _RPAREN .
+
+    $default  reduce using rule 61 (input)
+
+
+State 113
+
+   62 output: _WRITE _LPAREN _ID _RPAREN .
+
+    $default  reduce using rule 62 (output)
+
+
+State 114
+
+   63 output: _WRITE _LPAREN _LITERAL _RPAREN .
+
+    $default  reduce using rule 63 (output)
+
+
+State 115
+
+   37 ids: _ID _LBRACK vallist _RBRACK .
+
+    $default  reduce using rule 37 (ids)
+
+
+State 116
+
+   41 vallist: vallist _COMMA . it
+
+    _ID      shift, and go to state 98
+    _ICONST  shift, and go to state 99
+
+    it  go to state 120
+
+
+State 117
+
+   60 loop: _FOR assign _TO expr _DO . stmt
+
+    _SEMI   shift, and go to state 34
+    _BEGIN  shift, and go to state 35
+    _FOR    shift, and go to state 42
+    _IF     shift, and go to state 43
+    _READ   shift, and go to state 44
+    _WRITE  shift, and go to state 45
+    _ID     shift, and go to state 46
+
+    code    go to state 47
+    stmt    go to state 121
+    assign  go to state 50
+    ids     go to state 51
+    cond    go to state 52
+    loop    go to state 53
+    input   go to state 54
+    output  go to state 55
+
+
+State 118
+
+   46 val: _ID _LPAREN vallist _RPAREN .
+
+    $default  reduce using rule 46 (val)
+
+
+State 119
+
+   53 cond: _IF expr bop expr _THEN . stmt _ELSE stmt
+
+    _SEMI   shift, and go to state 34
+    _BEGIN  shift, and go to state 35
+    _FOR    shift, and go to state 42
+    _IF     shift, and go to state 43
+    _READ   shift, and go to state 44
+    _WRITE  shift, and go to state 45
+    _ID     shift, and go to state 46
+
+    code    go to state 47
+    stmt    go to state 122
+    assign  go to state 50
+    ids     go to state 51
+    cond    go to state 52
+    loop    go to state 53
+    input   go to state 54
+    output  go to state 55
+
+
+State 120
+
+   41 vallist: vallist _COMMA it .
+
+    $default  reduce using rule 41 (vallist)
+
+
+State 121
+
+   60 loop: _FOR assign _TO expr _DO stmt .
+
+    $default  reduce using rule 60 (loop)
+
+
+State 122
+
+   53 cond: _IF expr bop expr _THEN stmt . _ELSE stmt
+
+    _ELSE  shift, and go to state 123
+
+
+State 123
+
+   53 cond: _IF expr bop expr _THEN stmt _ELSE . stmt
+
+    _SEMI   shift, and go to state 34
+    _BEGIN  shift, and go to state 35
+    _FOR    shift, and go to state 42
+    _IF     shift, and go to state 43
+    _READ   shift, and go to state 44
+    _WRITE  shift, and go to state 45
+    _ID     shift, and go to state 46
+
+    code    go to state 47
+    stmt    go to state 124
+    assign  go to state 50
+    ids     go to state 51
+    cond    go to state 52
+    loop    go to state 53
+    input   go to state 54
+    output  go to state 55
+
+
+State 124
+
+   53 cond: _IF expr bop expr _THEN stmt _ELSE stmt .
+
+    $default  reduce using rule 53 (cond)

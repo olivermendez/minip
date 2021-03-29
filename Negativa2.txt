@@ -1,0 +1,54 @@
+Program Test_2;
+
+Variables
+
+	GlobalInt  : Integer;
+	GlobalStr  : String; 
+	GlobalReal : Real;	
+
+EndVars
+
+Procedures
+
+	Procedure FooDummyProc();
+	
+	NoVariables
+	EndVars
+	
+	NoProcedures
+	EndProcs
+	
+	Begin
+	;
+	End;
+
+	Procedure FooProcess_1(fooPar1 : Integer);
+	
+	Variables 
+		LoopIndex : Integer;
+		ProcMsg   : String; 
+	EndVars
+	
+	NoProcedures
+	EndProcs
+	
+	Begin 
+		For LoopIndex := 1 to fooPar Do		
+			Write("Im executing the ith Iteration");
+		
+		Write("I'm Done!!!!")
+	
+	End;
+	
+	Begin
+		If LoopIndex := 1 Then 
+			Write("The condition is true")
+		Else 
+			Read (FooValue);
+	
+	End 
+	
+
+EndProcs;
+
+{ No main Begin-End block }

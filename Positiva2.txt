@@ -1,0 +1,18 @@
+Program Test3;
+
+Variables
+	{num1:	Integer;}
+	num2: Integer;
+	answer: Integer;
+EndVars
+Noprocedures
+EndProcs
+
+Begin
+	Read(num1);
+	Read(num2);
+	If num1 < num2 Then
+		Write(num2)
+	Else
+ 		Write(num1)
+End

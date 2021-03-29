@@ -1,0 +1,82 @@
+Rule in title: _PROGRAM _ID 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in ptitle: _PROC _ID _LPAREN _RPAREN 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in procs: _NOPROCS 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: procdef 
+Rule in ptitle: _PROC _ID _LPAREN _RPAREN 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in ptitle: _PROC _ID _LPAREN varlist _RPAREN 
+Rule in vars: _NOVARSRule in procs: _NOPROCS 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: procdef 
+Rule in procs: _PROCS proclist 
+ Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: proclist _SEMI procdef 
+Rule in procs: _PROCS proclist 
+ Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in program: _SEMI 
+CUMPLE

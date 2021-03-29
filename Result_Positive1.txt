@@ -1,0 +1,249 @@
+Rule in title: _PROGRAM _ID 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: varlist _SEMI vardef 
+Rule in nlist: _ICONST 
+Rule in bnl: _LBRACK nlist _RBRACK 
+Rule in vardef: _ID _COLON _INTEGER bnl 
+Rule in varlist: varlist _SEMI vardef 
+Rule in nlist: _ICONST 
+Rule in nlist: nlist _COMMA _ICONST 
+Rule in bnl: _LBRACK nlist _RBRACK 
+Rule in vardef: _ID _COLON _INTEGER bnl 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in ptitle: _PROC _ID _LPAREN _RPAREN 
+Rule in vars: _NOVARSRule in procs: _NOPROCS 
+Rule in code:  _SEMI 
+Rule in stmt: code 
+Rule in para: stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: procdef 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in ptitle: _PROC _ID _LPAREN varlist _RPAREN 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: varlist _SEMI vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in procs: _NOPROCS 
+Rule in ids: _ID 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in output: _WRITE _LPAREN _LITERAL _RPAREN 
+Rule in stmt: output 
+Rule in loop: _FOR assign _TO expr _DO stmt 
+Rule in stmt: loop 
+Rule in para: stmt 
+Rule in output: _WRITE _LPAREN _LITERAL _RPAREN 
+Rule in stmt: output 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: proclist _SEMI procdef 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: vardef 
+Rule in ptitle: _PROC _ID _LPAREN varlist _RPAREN 
+Rule in vardef: _ID _COLON _REAL 
+Rule in varlist: vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in procs: _NOPROCS 
+Rule in ids: _ID 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in stmt: assign 
+Rule in para: stmt 
+Rule in it: _ID 
+Rule in vallist: it 
+Rule in ids: _ID _LBRACK vallist _RBRACK 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in stmt: assign 
+Rule in para: para _SEMI stmt 
+Rule in ids: _ID 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: expr _PLUS term 
+Rule in fac: _LPAREN expr _RPAREN 
+Rule in term: term _DIVIDE fac 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: term _MULT fac  
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in stmt: assign 
+Rule in para: para _SEMI stmt 
+Rule in ids: _ID 
+Rule in it: _ID 
+Rule in vallist: it 
+Rule in it: _ID 
+Rule in vallist: vallist _COMMA it  
+Rule in ids: _ID _LBRACK vallist _RBRACK 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in stmt: assign 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: proclist _SEMI procdef 
+Rule in vardef: _ID _COLON _STRING 
+Rule in varlist: vardef 
+Rule in ptitle: _PROC _ID _LPAREN varlist _RPAREN 
+Rule in vardef: _ID _COLON _INTEGER 
+Rule in varlist: vardef 
+Rule in vars: _VARS varlist _SEMI 
+Rule in procs: _NOPROCS 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in bop: _EQL 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in output: _WRITE _LPAREN _LITERAL _RPAREN 
+Rule in stmt: output 
+Rule in input: _READ _LPAREN _ID _RPAREN 
+Rule in stmt: input 
+Rule in cond: _IF expr bop expr _THEN stmt _ELSE stmt 
+Rule in stmt: cond 
+Rule in para: stmt 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in bop: _EQL 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in output: _WRITE _LPAREN _LITERAL _RPAREN 
+Rule in stmt: output 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in bop: _GTR 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in input: _READ _LPAREN _ID _RPAREN 
+Rule in stmt: input 
+Rule in input: _READ _LPAREN _ID _RPAREN 
+Rule in stmt: input 
+Rule in cond: _IF expr bop expr _THEN stmt _ELSE stmt 
+Rule in stmt: cond 
+Rule in cond: _IF expr bop expr _THEN stmt _ELSE stmt 
+Rule in stmt: cond 
+Rule in para: para _SEMI stmt 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in bop: _NEQ 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in output: _WRITE _LPAREN _LITERAL _RPAREN 
+Rule in stmt: output 
+Rule in output: _WRITE _LPAREN _ID _RPAREN 
+Rule in stmt: output 
+Rule in cond: _IF expr bop expr _THEN stmt _ELSE stmt 
+Rule in stmt: cond 
+Rule in para: para _SEMI stmt 
+Rule in ids: _ID 
+Rule in val: ids 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in bop: _EQL 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in ids: _ID 
+Rule in val: _RCONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in stmt: assign 
+Rule in ids: _ID 
+Rule in val: _RCONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in stmt: assign 
+Rule in cond: _IF expr bop expr _THEN stmt _ELSE stmt 
+Rule in stmt: cond 
+Rule in para: para _SEMI stmt 
+Rule in ids: _ID 
+Rule in val: _ICONST 
+Rule in fac: val 
+Rule in term: fac 
+Rule in it: _ICONST 
+Rule in vallist: it 
+Rule in it: _ICONST 
+Rule in vallist: vallist _COMMA it  
+Rule in val: _ID _LPAREN vallist _RPAREN
+Rule in fac: val 
+Rule in term: term _MULT fac  
+Rule in expr: term 
+Rule in assign: ids _ASSIGN expr 
+Rule in stmt: assign 
+Rule in para: para _SEMI stmt 
+Rule in code: _BEGIN para _END 
+Rule in block: _PROGRAM _ID 
+Rule in procdef: ptitle _SEMI block 
+Rule in proclist: proclist _SEMI procdef 
+Rule in procs: _PROCS proclist 
+ Rule in code:  _SEMI 
+Rule in block: _PROGRAM _ID 
+Rule in program: _SEMI 
+CUMPLE

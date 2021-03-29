@@ -1,0 +1,39 @@
+	Program A;
+ 	variables	x: real;
+ 				y: integer;
+ 				D: integer;			endvars
+ 	procedures
+ 		Procedure B();
+ 			variables	x: integer;
+ 						y: real;			endvars
+ 			noprocedures endprocs
+ 			begin
+ 				write (x);
+ 				write (C)
+ 			end;
+ 		Procedure C();
+ 			variables	x: string;
+ 						B: string;   endvars
+ 			procedures
+ 				Procedure D(C : integer);
+ 					novariables	endvars
+ 					noprocedures  endprocs
+ 					begin
+ 						write (y);
+ 						write (x);
+ 						write (C)
+ 					end
+ 			endprocs
+ 			begin
+ 				write (D);	
+ 				write (C);
+ 				write (x);
+ 				write (B)
+ 			end
+ 		endprocs
+ 		begin
+ 			write (D);
+ 			write (y);
+ 			write (B);
+ 			write (C)
+ 		end
